@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="struts-base" extends="struts-default" abstract="true">
+		<interceptors>
+			<interceptor name="autentication"
+				class="es.curso.struts2.ejercicio7.interceptors.AutenticationInterceptor" />
+
+            <interceptor-stack name="basicStack">
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="servletConfig"/>
+			     <interceptor-ref name="store">
+					<param name="operationMode">AUTOMATIC</param>
+			     </interceptor-ref>
+            </interceptor-stack>
+			
+            <interceptor-stack name="defaultStack">
+              	<interceptor-ref name="basicStack"/>
+              	<interceptor-ref name="checkbox"/> 
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*</param>
+                </interceptor-ref>                
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="debugging"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*</param>
+                </interceptor-ref>                
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+            </interceptor-stack>
+ 
+			<interceptor-stack name="secureStack">
+				<interceptor-ref name="autentication"/>
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="secureStack"/>
+		<default-action-ref name="menu"/>
+		
+		<global-results>
+			<result name="login" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">registro</param>
+			</result>
+			<result name="menu" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">menu</param>
+			</result>
+		</global-results>		
+	</package>
+
+	<package name="menu" namespace="/" extends="struts-base">
+		<action name="menu">
+			<result type="redirectAction">
+				<param name="namespace">/mensaje</param>
+				<param name="actionName">lista</param>			
+			</result>
+		</action>
+	</package>
+	
+	<include file="es/curso/struts2/ejercicio7/actions/contacto/contacto.xml"/>
+	<include file="es/curso/struts2/ejercicio7/actions/login/login.xml"/>
+	<include file="es/curso/struts2/ejercicio7/actions/mensaje/mensaje.xml"/>
+	<include file="es/curso/struts2/ejercicio7/actions/usuario/usuario.xml"/>
+</struts>

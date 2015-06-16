@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="mensaje" namespace="/mensaje" extends="struts-base">
+		<action name="lista" class="es.curso.struts2.ejercicio7.actions.mensaje.MensajeAction" method="lista">
+			<result>/WEB-INF/jsp/mensaje/lista_mensajes.jsp</result>
+		</action>
+		
+		<action name="nuevo" class="es.curso.struts2.ejercicio7.actions.mensaje.MensajeAction">
+			<interceptor-ref name="autentication"/>
+			<interceptor-ref name="basicStack"/>
+			<result>/WEB-INF/jsp/mensaje/alta_mensaje.jsp</result>
+		</action>
+
+		<action name="alta" class="es.curso.struts2.ejercicio7.actions.mensaje.MensajeAction" method="alta">
+			<result type="redirectAction">lista</result>
+			<result name="error">/WEB-INF/jsp/mensaje/alta_mensaje.jsp</result>
+			<result name="input">/WEB-INF/jsp/mensaje/alta_mensaje.jsp</result>
+		</action>
+		
+		<action name="consulta" class="es.curso.struts2.ejercicio7.actions.mensaje.MensajeAction" method="consulta">
+			<result>/WEB-INF/jsp/mensaje/consulta_mensaje.jsp</result>
+		</action>
+		
+		<action name="eliminar" class="es.curso.struts2.ejercicio7.actions.mensaje.MensajeAction" method="eliminar">
+			<result type="redirectAction">lista</result>
+		</action>				
+	</package>	
+</struts>

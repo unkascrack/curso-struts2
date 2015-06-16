@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>Ejercicio-3.10 Velocity</title>
+</head>
+<body>
+	<h4>Velocity SUCCESS!!!</h4>
+	<hr/>
+	
+	<table border="1" cellspacing="0" cellpadding="0">
+		#slabel ("label=Nombre" "name=nombre")
+		#slabel ("label=Fecha Nacimiento" "name=feNacimiento")
+		#slabel ("label=Información" "name=informacion")
+		#slabel ("label=Color Favorito" "name=colorFavorito")
+		#slabel ("label=Edad 18+" "name=mayorEdad")
+		#slabel ("label=Comunidad" "name=comunidad")
+		#slabel ("label=Provincia" "name=provincia")
+	</table>
+	
+	<right>
+	#surl ("id=url" "action=menu" "namespace=/")
+	#sa("href=${url}")Volver#end
+	</right>
+
+</body>
+</html>

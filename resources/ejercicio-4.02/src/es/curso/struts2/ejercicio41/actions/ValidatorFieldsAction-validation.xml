@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE validators PUBLIC
+  		"-//OpenSymphony Group//XWork Validator 1.0//EN" 
+  		"http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="requiredValidatorField">
+		<field-validator type="required">
+			<message><![CDATA[ Campo Required Validator obligatorio ]]></message>
+		</field-validator>
+	</field>
+	<field name="requiredStringValidatorField">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message><![CDATA[ Campo Required String Validator obligatorio y de tipo String]]></message>
+		</field-validator>
+	</field>
+	<field name="integerValidatorField">
+		<field-validator type="int">
+			<param name="min">1</param>
+			<param name="max">10</param>
+			<message><![CDATA[ Campo Integer Validator debe ser un entero comprendido entre los valores, mínimo 1 y máximo 10 ]]></message>
+		</field-validator>
+	</field>
+	<field name="dateValidatorField">
+		<field-validator type="date">
+			<param name="min">01/01/1990</param>
+			<param name="max">01/01/2010</param>
+			<message><![CDATA[ Campo Date Validator debe ser mayor a 01/01/1990 y menor a 01/01/2010 ]]></message>
+		</field-validator>
+	</field>
+	<field name="emailValidatorField">
+		<field-validator type="email">
+			<message><![CDATA[ Campo Email Validator debe ser una dirección de email válido ]]></message>
+		</field-validator>
+	</field>
+	<field name="urlValidatorField">
+		<field-validator type="url">
+			<message><![CDATA[ Campo URL Validator debe ser una dirección URL válida ]]></message>
+		</field-validator>
+	</field>
+	<field name="stringLengthValidatorField">
+		<field-validator type="stringlength">
+			<param name="maxLength">4</param>
+			<param name="minLength">2</param>
+			<param name="trim">true</param>
+			<message><![CDATA[ Campo String Length Validator debe ser un String con 2 carácteres como mínimo y 4 como máximo ]]></message>
+		</field-validator>
+	</field>
+	<field name="regexValidatorField">
+		<field-validator type="regex">
+			<param name="expression">.*\.txt</param>
+			<message><![CDATA[ Campo Regex Validator el campo debe coincidir con la expresión (.*\.txt) ]]></message>
+		</field-validator>
+	</field>
+	<field name="fieldExpressionValidatorField">
+		<field-validator type="fieldexpression">
+			<param name="expression">
+				(fieldExpressionValidatorField == requiredValidatorField)
+			</param>
+			<message><![CDATA[ Campo Field Expression Validator debe ser igual al Campo Required Validator ]]></message>
+		</field-validator>
+	</field>
+</validators>

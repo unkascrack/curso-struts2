@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+	<package name="ejercicio26" namespace="/" extends="struts-default">
+		<action name="listado" class="es.curso.struts2.ejercicio26.actions.ListadoUsuariosAction">
+			<result>/jsp/listado.jsp</result>
+		</action>
+		<action name="consulta" class="es.curso.struts2.ejercicio26.actions.ConsultaUsuarioAction">
+			<interceptor-ref name="paramsPrepareParamsStack"/>
+			<result>/jsp/consulta.jsp</result>
+		</action>
+		
+		<action name="alta">
+			<result>/jsp/alta.jsp</result>
+		</action>
+		<action name="guardar" class="es.curso.struts2.ejercicio26.actions.AltaUsuarioAction" method="alta">
+			<result name="success" type="redirectAction">listado</result>
+			<result name="error">/jsp/alta.jsp</result>
+			<result name="input">/jsp/alta.jsp</result>
+		</action>
+	</package>
+
+</struts>

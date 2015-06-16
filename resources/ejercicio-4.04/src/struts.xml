@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="mensajes" />
+
+	<package name="ejercicio44" extends="struts-default">
+		<action name="i18n" class="es.curso.struts2.ejercicio44.actions.I18NAction">
+			<result>/jsp/i18n/i18n.jsp</result>
+		</action>
+	</package>
+</struts>

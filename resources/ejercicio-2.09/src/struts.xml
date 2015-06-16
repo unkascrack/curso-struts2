@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="struts-base" abstract="true" extends="struts-default">
+		<global-results>
+			<result name="errorSecurity">/jsp/exceptions/error_security.jsp</result>
+			<result name="errorThrowable">/jsp/exceptions/error_throwable.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.SecurityException" result="errorSecurity" />
+			<exception-mapping exception="java.lang.Throwable" result="errorThrowable" />
+		</global-exception-mappings>
+	</package>
+
+	<package name="ejercicio29" namespace="/" extends="struts-base">
+		<action name="menu">
+			<result>/jsp/menu.jsp</result>
+		</action>	
+		<action name="exception1" class="es.curso.struts2.ejercicio29.actions.ExceptionAction" method="exception1">
+			<exception-mapping exception="java.lang.Exception" result="error" />
+			<result name="success">/jsp/success.jsp</result>
+			<result name="error">/jsp/exceptions/error_exception.jsp</result>
+		</action>
+		<action name="exception2" class="es.curso.struts2.ejercicio29.actions.ExceptionAction" method="exception2">
+			<result>/jsp/success.jsp</result>
+		</action>
+		<action name="exception3" class="es.curso.struts2.ejercicio29.actions.ExceptionAction" method="exception3">
+			<result>/jsp/success.jsp</result>
+		</action>				
+	</package>
+
+<!--  
+	<package name="ejercicio29" namespace="/" extends="struts-default">
+		<action name="menu">
+			<result>/jsp/menu.jsp</result>
+		</action>	
+		<action name="exception1" class="es.curso.struts2.ejercicio29.actions.ExceptionAction" method="exception1">
+			<result>/jsp/success.jsp</result>
+		</action>
+		<action name="exception2" class="es.curso.struts2.ejercicio29.actions.ExceptionAction" method="exception2">
+			<result>/jsp/success.jsp</result>
+		</action>
+		<action name="exception3" class="es.curso.struts2.ejercicio29.actions.ExceptionAction" method="exception3">
+			<result>/jsp/success.jsp</result>
+		</action>				
+	</package>
+-->
+
+</struts>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="usuario" namespace="/usuario" extends="struts-default">
+		<action name="nuevo" class="es.curso.struts2.ejercicio7.actions.usuario.AltaUsuarioAction">
+			<interceptor-ref name="basicStack"/>
+			<result>/WEB-INF/jsp/usuario/alta_usuario.jsp</result>
+		</action>
+
+		<action name="alta" class="es.curso.struts2.ejercicio7.actions.usuario.AltaUsuarioAction" method="alta">
+			<result type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">menu</param>
+			</result>
+			<result name="error">/WEB-INF/jsp/usuario/alta_usuario.jsp</result>
+			<result name="input">/WEB-INF/jsp/usuario/alta_usuario.jsp</result>
+		</action>
+	</package>	
+
+</struts>

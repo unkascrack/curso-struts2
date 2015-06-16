@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="contacto" namespace="/contacto" extends="struts-base">
+
+		<action name="lista" class="es.curso.struts2.ejercicio7.actions.contacto.ContactoAction" method="lista">
+			<interceptor-ref name="autentication"/>
+			<interceptor-ref name="basicStack"/>
+			<result>/WEB-INF/jsp/contacto/lista_contactos.jsp</result>
+		</action>
+	
+		<action name="nuevo" class="es.curso.struts2.ejercicio7.actions.contacto.AltaContactoAction">
+			<interceptor-ref name="autentication"/>
+			<interceptor-ref name="basicStack"/>
+			<result>/WEB-INF/jsp/contacto/alta_contacto.jsp</result>
+		</action>
+
+		<action name="alta" class="es.curso.struts2.ejercicio7.actions.contacto.AltaContactoAction" method="alta">
+			<result type="redirectAction">lista</result>
+			<result name="error">/WEB-INF/jsp/contacto/alta_contacto.jsp</result>
+			<result name="input">/WEB-INF/jsp/contacto/alta_contacto.jsp</result>
+		</action>
+		
+		<action name="consulta" class="es.curso.struts2.ejercicio7.actions.contacto.ContactoAction">
+			<result>/WEB-INF/jsp/contacto/consulta_contacto.jsp</result>
+		</action>
+
+		<action name="modificar" class="es.curso.struts2.ejercicio7.actions.contacto.ContactoAction" method="modificar">
+			<result type="redirectAction">lista</result>
+			<result name="error">/WEB-INF/jsp/contacto/consulta_contacto.jsp</result>
+			<result name="input">/WEB-INF/jsp/contacto/consulta_contacto.jsp</result>
+		</action>
+
+		<action name="eliminar" class="es.curso.struts2.ejercicio7.actions.contacto.ContactoAction" method="eliminar">
+			<result type="redirectAction">lista</result>
+			<result name="input" type="redirectAction">lista</result>
+		</action>		
+	</package>	
+
+</struts>

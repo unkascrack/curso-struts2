@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="ejercicio210-usuarios" namespace="/usuarios" extends="struts-default">
+		<action name="login">
+			<result>/jsp/usuarios/login.jsp</result>
+		</action>
+		<action name="registro" class="es.curso.struts2.ejercicio210.actions.UsuarioAction" method="login">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/contactos</param>
+				<param name="actionName">listado</param>
+			</result>
+			<result name="error">/jsp/usuarios/login.jsp</result>
+			<result name="input">/jsp/usuarios/login.jsp</result>
+		</action>
+		
+		<action name="logout" class="es.curso.struts2.ejercicio210.actions.UsuarioAction" method="logout">
+			<result name="success" type="redirect">/jsp/usuarios/logout.jsp</result>
+		</action>
+		
+		<action name="alta">
+			<result>/jsp/usuarios/alta.jsp</result>
+		</action>
+		<action name="guardar" class="es.curso.struts2.ejercicio210.actions.AltaUsuarioAction" method="alta">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/contactos</param>
+				<param name="actionName">listado</param>
+			</result>		
+			<result name="error">/jsp/usuarios/alta.jsp</result>
+			<result name="input">/jsp/usuarios/alta.jsp</result>
+		</action>			
+	</package>
+</struts>

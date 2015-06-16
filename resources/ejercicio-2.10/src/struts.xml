@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="struts-base" extends="struts-default" abstract="true">
+		<interceptors>
+			<interceptor name="login"
+				class="es.curso.struts2.ejercicio210.interceptors.LoginInterceptor" />
+		
+			<interceptor-stack name="secureStack">
+				<interceptor-ref name="login"/>
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+			
+			<interceptor-stack name="prepareSecureStack">
+				<interceptor-ref name="login"/>
+				<interceptor-ref name="paramsPrepareParamsStack" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="secureStack"/>
+		
+		<global-results>
+			<result name="login" type="redirectAction">
+				<param name="namespace">/usuarios</param>
+				<param name="actionName">login</param>
+			</result>
+		</global-results>		
+	</package>
+
+	<include file="es/curso/struts2/ejercicio210/actions/contacto.xml"/>
+	<include file="es/curso/struts2/ejercicio210/actions/usuario.xml"/>
+
+</struts>

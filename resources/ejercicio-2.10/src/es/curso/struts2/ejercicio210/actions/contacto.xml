@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="ejercicio210-contactos" namespace="/contactos" extends="struts-base">
+		<action name="listado" class="es.curso.struts2.ejercicio210.actions.ContactoAction" method="listado">
+			<result>/jsp/contactos/listado.jsp</result>
+		</action>
+		
+		<action name="alta">
+			<result>/jsp/contactos/alta.jsp</result>
+		</action>		
+		<action name="guardar" class="es.curso.struts2.ejercicio210.actions.AltaContactoAction" method="alta">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/contactos</param>
+				<param name="actionName">listado</param>
+			</result>
+			<result name="error">/jsp/contactos/alta.jsp</result>
+			<result name="input">/jsp/contactos/alta.jsp</result>
+		</action>
+		
+		<action name="editar" class="es.curso.struts2.ejercicio210.actions.ContactoAction" method="editar">
+			<interceptor-ref name="prepareSecureStack"/>
+			<result>/jsp/contactos/editar.jsp</result>
+		</action>
+		
+		<action name="modificar" class="es.curso.struts2.ejercicio210.actions.ContactoAction" method="modificar">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/contactos</param>
+				<param name="actionName">listado</param>
+			</result>
+			<result name="error">/jsp/contactos/edit.jsp</result>
+			<result name="input">/jsp/contactos/edit.jsp</result>
+		</action>
+		
+		<action name="eliminar" class="es.curso.struts2.ejercicio210.actions.ContactoAction" method="eliminar">
+			<interceptor-ref name="prepareSecureStack"/>
+			<result name="success" type="redirectAction">
+				<param name="namespace">/contactos</param>
+				<param name="actionName">listado</param>
+			</result>
+		</action>										
+	</package>
+</struts>

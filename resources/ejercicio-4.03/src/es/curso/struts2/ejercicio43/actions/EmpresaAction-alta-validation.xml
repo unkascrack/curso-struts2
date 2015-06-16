@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE validators PUBLIC 
+  		"-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  		"http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="identificador">
+		<field-validator type="required" short-circuit="true">
+			<message>El campo CIF es obligatorio.</message>
+		</field-validator>
+		<field-validator type="cif">
+			<message>El formato del campo CIF no es correcto.</message>
+		</field-validator>
+	</field>
+	<field name="nombre">
+		<field-validator type="requiredstring">
+			<message>El campo NOMBRE es obligatorio.</message>
+		</field-validator>
+	</field>
+</validators>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+	<package name="ejercicio38" namespace="/" extends="struts-default">
+		<action name="menu">
+			<result>/jsp/menu.jsp</result>
+		</action>
+	</package>
+
+	<package name="chain-action" extends="struts-default" namespace="/chain-action">
+		<action name="chainAction1" class="es.curso.struts2.ejercicio38.actions.Chain1Action">
+			<result type="chain">chainAction2</result>		
+		</action>
+		<action name="chainAction2" class="es.curso.struts2.ejercicio38.actions.Chain2Action">
+			<result type="chain">chainAction3</result>
+		</action>
+		<action name="chainAction3" class="es.curso.struts2.ejercicio38.actions.Chain3Action">
+			<result>/jsp/chainAction.jsp</result>
+		</action>
+	</package>
+</struts>

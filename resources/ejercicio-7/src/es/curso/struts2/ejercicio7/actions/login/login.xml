@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="login" namespace="/" extends="struts-default">
+		<action name="registro" class="es.curso.struts2.ejercicio7.actions.login.LoginAction">
+			<interceptor-ref name="basicStack"/>
+			<result>/WEB-INF/jsp/login/login.jsp</result>
+		</action>
+	
+		<action name="login" class="es.curso.struts2.ejercicio7.actions.login.LoginAction" method="login">
+			<result name="success" type="redirectAction">menu</result>
+			<result name="error">/WEB-INF/jsp/login/login.jsp</result>
+			<result name="input">/WEB-INF/jsp/login/login.jsp</result>
+		</action>
+		<action name="logout" class="es.curso.struts2.ejercicio7.actions.login.LoginAction" method="logout">
+			<interceptor-ref name="basicStack"/>
+			<result name="success">/WEB-INF/jsp/login/logout.jsp</result>
+		</action>
+	</package>
+	
+</struts>
